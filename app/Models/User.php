@@ -16,10 +16,16 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    //agregar las nuevas columnas 
     protected $fillable = [
         'name',
         'email',
         'password',
+        'address',
+        'postal_code',
+        'country_id',
+        'state_id',
+        'city_id'
     ];
 
     /**
@@ -43,5 +49,9 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    //agregando relacion a la tabla pais 
+    public function country(){
+        return $this->belongsTo(Country::class);
     }
 }
